@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+  <title>Network Visualisation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+
+    /* Bootstrap styles */
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;}
+    }
+
+    /* Styles for the network visualisation */
+    svg {
+        display: block;
+        width: 80%;
+        margin: 0 auto;
+      }
+
+    .node {
+        stroke: #fff;
+        stroke-width: 1.5px;
+    }
+
+    .link {
+        stroke: #999;
+        stroke-opacity: 0.6;
+    }
+
+    .d3-tip {
+        line-height: 1;
+        color: black;
+    }
+
+    /* Slider */
+    .slidecontainer {
+      width: 50%;
+    }
+
+    .slider {
+      -webkit-appearance: none;
+      width: 50%;
+      height: 25px;
+      background: #d3d3d3;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
+
+    .slider:hover {
+      opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      background: #4CAF50;
+      cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+      width: 25px;
+      height: 25px;
+      background: #4CAF50;
+      cursor: pointer;
+    }
+</style>
+
+<body>
+    <div class="container-fluid">
+    <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h4>Network Visualisation</h4>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#section1">Visualisation Tool</a></li>
+        <li><a href="#section2">Background</a></li>
+        <li><a href="#section3">Examples</a></li>
+      </ul><br>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search...">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div>
+    </div>
+
+    <div class="col-sm-9">
+     <hr>
+     <h1>Network Exploration</h1>
+     <p>The interaction between elements has become a focus in psychological research in recent years. This new approach emphasises the interaction between elements like symptoms of a disorder in order to understand the synergies. This network perspective can provide many new insights into psychological phenomena. However, networks can also grow rapidly in complexity once more than a just a few elements are included. We created this visualisation to aid in the active exploration of networks. Using this web app, you can upload your own networks and explore the effect of removing connections.</p>
+    <p>Uploading your data:</p>
+    <ol>
+        <li>This web app can load networks generated in <a href="https://cran.r-project.org/web/packages/bootnet/bootnet.pdf">Bootnet</a></li>
+        <li>Networks generated using other software can also be represented but need to be converted to this <a href="./format.html">format</a></li>
+    </ol>
+    <br><br>
+    </div>
+
+    <div class="col-sm-9", name="visualisation">
+        <button id="reset" type="button">Reset</button>
+        <svg height="500"></svg>
+
+        <script src="https://d3js.org/d3.v3.min.js"></script>
+        <script type='text/javascript' src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    </div>
+    <script src="./networkVis_10Mar20.js"></script>
+</body>
+</html>
